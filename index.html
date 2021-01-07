@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="Author" content="Jesús Díaz Rivas" />
+    <link rel="stylesheet" type="text/css" href=".\css\css.css" />
+    <title>CapitalIlimitedInvest calculator</title>
+    <script src="js/Main.js"></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+
+      <div class="businessLogic">
+        <h3>¿Cuántos dólares hay en tu cuenta depositados?</h3>
+
+        <input type="number" id="moneyInput" value="117.83" />
+
+        <h3>Cuántos días reinvertirás tu dinero</h3>
+
+        <input type="number" id="daysInput" value="30" />
+        <div class="buttonPosition">
+            <button onclick="printFinalMoney()">Calcular</button>
+          </div>
+
+          <div class="buttonPosition">
+            <button onclick="deleteFinalMoney()">Borrar</button>
+          </div>
+      </div>
+
+      <p>
+        Al cabo de <span id="daysWaiting">... </span> días esperando habrás
+        generado <span id="result">... </span> $ que son
+        <span id="resultEuros">... </span> €
+      </p>
+
+      <div>
+        <p>
+            <a href="./subPages/faq.html">¿Qué es esta página?</a>
+        </p>
+      </div>
+    
+    </div>
+  </body>
+</html>
