@@ -17,13 +17,7 @@ class UserData {
   }
 
   getPercentage() {
-
-    if (this.money < 1000) {
-      this.percentage = 0.025;
-    } else {
-      this.percentage = 0.03;
-    }
-
+    this.percentage = this.getMoney() < 1000 ? 0.025 : 0.03;
     return this.percentage;
   }
 
@@ -46,22 +40,30 @@ function moneyCalculations() {
   return currentMoney;
 }
 
-const api_url =
-  "https://api.exchangeratesapi.io/latest?base=USD";
+const api_url = "https://api.exchangeratesapi.io/latest?base=USD";
 
   const userAction = async () => {
   const response = await fetch(api_url);
   const data = await response.json();
+  
   return data['rates']['EUR'];
 };
 
-async function printFinalMoney() { 
+async function printFinalEuros() {
+  
+  var data = await userAction();
   
   var finalMoney = moneyCalculations();
-  var data = await userAction();
+  
+  document.getElementById("resultEuros").innerHTML = (finalMoney * data).toFixed(2);
+}
+
+  function printFinalDollars() { 
+  
+  var finalMoney = moneyCalculations();
 
   document.getElementById("result").innerHTML = finalMoney.toFixed(2);
-  document.getElementById("resultEuros").innerHTML = (finalMoney * data).toFixed(2);
+ 
 }
 
 function printDaysWaiting(){
@@ -71,8 +73,9 @@ function printDaysWaiting(){
 }
 
 function printData(){
-  printFinalMoney();
+  printFinalDollars();
   printDaysWaiting();
+  printFinalEuros();
 }
 
 function deleteData() {
