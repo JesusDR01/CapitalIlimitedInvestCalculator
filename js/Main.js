@@ -1,43 +1,43 @@
 class UserData {
 
-  constructor() {
-    this.money = this.getMoney();
-    this.days = this.getDays();
-    this.percentage = this.getPercentage();
-  }
-
   getMoney() {
-    var money = document.getElementById("moneyInput").value;
-    return parseFloat(money);
+    const investmentMoney = document.getElementById("moneyInput").value;
+    return parseFloat(investmentMoney);
   }
 
   getDays() {
-    var days = document.getElementById("daysInput").value;
-    return parseInt(days);
+    const investmentDays = document.getElementById("daysInput").value;
+    return parseInt(investmentDays);
   }
 
   getPercentage() {
-    this.percentage = this.getMoney() < 1000 ? 0.025 : 0.03;
+    const HIGH_PERCENT_MONEY_AMOUNT = 1000;
+    const LOW_PERCENT = 0.025;
+    const HIGH_PERCENT = 0.03;
+    
+    this.percentage = this.getMoney() < HIGH_PERCENT_MONEY_AMOUNT ? LOW_PERCENT : HIGH_PERCENT;
+
     return this.percentage;
   }
 
 }
 
 function moneyCalculations() {
-  let myUser = new UserData();
-  
-  var currentMoney = myUser.getMoney();
-  var days = myUser.getDays();
-  var benefitsPercentagePerDay = myUser.getPercentage();
+  const myUser = new UserData();
 
-  for (i = 0; i < days; i += 6) {
-    moneyGeneratedEveryDay = currentMoney * benefitsPercentagePerDay;
-    moneyGeneratedPast6Days = moneyGeneratedEveryDay * 6;
-    moneySum = currentMoney + moneyGeneratedPast6Days;
-    currentMoney = moneySum;
+  let userMoney = myUser.getMoney();
+  const daysInvesting = myUser.getDays();
+  const basePercentage = myUser.getPercentage();
+  const basePercentageAfter6Days = 6 * basePercentage;
+  
+  let moneyBenefitsAfter6Days;
+
+  for (let dayCount = 0; dayCount < daysInvesting; dayCount += 6) {
+    moneyBenefitsAfter6Days = basePercentageAfter6Days * userMoney;
+    userMoney = moneyBenefitsAfter6Days + userMoney;
   }
   
-  return currentMoney;
+  return userMoney;
 }
 
 const api_url = "https://api.exchangeratesapi.io/latest?base=USD";
@@ -51,25 +51,24 @@ const api_url = "https://api.exchangeratesapi.io/latest?base=USD";
 
 async function printFinalEuros() {
   
-  var data = await userAction();
+  const data = await userAction();
   
-  var finalMoney = moneyCalculations();
+  const finalUserMoney = moneyCalculations();
   
-  document.getElementById("resultEuros").innerHTML = (finalMoney * data).toFixed(2);
+  document.getElementById("resultEuros").textContent = (finalUserMoney * data).toFixed(2);
 }
 
   function printFinalDollars() { 
   
-  var finalMoney = moneyCalculations();
+  const finalUserMoney = moneyCalculations();
 
-  document.getElementById("result").innerHTML = finalMoney.toFixed(2);
- 
+  document.getElementById("result").textContent = finalUserMoney.toFixed(2);
 }
 
 function printDaysWaiting(){
-  let myUser = new UserData();
-  var days = myUser.getDays();
-  document.getElementById("daysWaiting").innerHTML = days;
+  const myUser = new UserData();
+  const days = myUser.getDays();
+  document.getElementById("daysWaiting").textContent = days;
 }
 
 function printData(){
@@ -79,7 +78,7 @@ function printData(){
 }
 
 function deleteData() {
-  document.getElementById("result").innerHTML = "...";
-  document.getElementById("resultEuros").innerHTML = "...";
-  document.getElementById("daysWaiting").innerHTML = "...";
+  document.getElementById("result").textContent = "...";
+  document.getElementById("resultEuros").textContent = "...";
+  document.getElementById("daysWaiting").textContent  = "...";
 }
