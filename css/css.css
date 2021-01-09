@@ -3,6 +3,7 @@ input,
 button {
   background-color: rgb(32, 32, 32);
   color: white;
+  font-size:larger;
 }
 
 .wrapper {
@@ -15,7 +16,47 @@ button {
 
 .buttonPosition {
   align-self: flex-end;
+  margin-top:20px;
 }
+button{
+  margin-left:20px;
+  border: 3px outset #e5eaee;
+}
+input{
+  border: 3px outset #e5eaee;
+}
+a{
+  text-decoration:none;
+  color:lightskyblue;
+  border-bottom: solid 0px lightskyblue;
+  transition: border-width 0.1s linear;
+}
+
+a:hover { border-width: 3px; }
+
+button{
+  cursor:pointer;
+}
+button:focus, input:focus{
+  outline: none;
+  box-shadow: none;
+}
+
+button:hover, input:hover{
+  border: 3px outset lightblue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .businessLogic {
   display: flex;
@@ -24,13 +65,31 @@ button {
   justify-content: center;
 }
 
+#subPages{
+display:flex;
+min-width: 28%;
+justify-content: space-between;
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 @media screen and (max-width: 540px) {
   h3 {
     font-size: 15px;
   }
   p {
-      font-size: 14px;
+    font-size: 14px;
     text-align: center;
   }
-
+  #subPages{
+    min-width:80%;
+  }
+  body{
+    font-size:unset;
+  }
 }

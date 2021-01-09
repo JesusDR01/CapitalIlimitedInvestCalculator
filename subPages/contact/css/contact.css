@@ -1,0 +1,157 @@
+.fuente-raleway {
+  font-family: "Raleway", arial;
+}
+@font-face {
+  font-family: "Raleway";
+  src: url("../fonts/Raleway.ttf");
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 98vh;
+  overflow: hidden;
+}
+
+.EstiloTexto {
+  color: white;
+  font-size: 25px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.TextBack {
+  width: 100%;
+  color: lightskyblue;
+  font-size: 20px;
+  border-bottom: solid 0px #70c5fd;
+  transition: border-width 0.1s linear;
+}
+.TextBack:hover {
+  border-width: 3px;
+}
+
+a:link {
+  text-decoration: none;
+}
+.ir {
+  display: block;
+  overflow: visible;
+  padding: 0 0 100%;
+  position: relative;
+  height: 0;
+  width: 100%;
+}
+
+.ir > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+html,
+body {
+  background-color: rgb(32, 32, 32);
+  color: white;
+}
+
+html {
+  font-size: 0.625em;
+}
+
+.soc {
+  display: block;
+  font-size: 0;
+  list-style: none;
+  padding: 48px;
+  padding: 4.8rem;
+  text-align: center;
+  width: 110rem;
+  max-width: 100%;
+}
+.soc li {
+  display: inline-block;
+  margin: 12px;
+  margin: 1.2rem;
+}
+.soc a,
+.soc svg {
+  display: block;
+}
+.soc a {
+  position: relative;
+  height: 96px;
+  height: 9.6rem;
+  width: 96px;
+  width: 9.6rem;
+}
+
+.icon-1:hover,
+.icon-2:hover,
+.icon-3:hover,
+.icon-4:hover {
+  border-radius: 100%;
+  color: #0e1a25;
+  fill: #0e1a25;
+  -webkit-transform: scale(1.25);
+  transform: scale(1.25);
+  -webkit-transition: background-color 0.5s, -webkit-transform 0.5s ease-out;
+  transition: background-color 0.5s, -webkit-transform 0.5s ease-out;
+  transition: background-color 0.5s, transform 0.5s ease-out;
+  transition: background-color 0.5s, transform 0.5s ease-out,
+    -webkit-transform 0.5s ease-out;
+}
+
+.icon-1 {
+  color: #6ed926;
+  fill: #6ed926;
+}
+.icon-1:hover {
+  background: #6ed926;
+}
+
+.icon-2 {
+  color: #26d9d9;
+  fill: #26d9d9;
+}
+.icon-2:hover {
+  background: #26d9d9;
+}
+
+.icon-3 {
+  color: #d926b5;
+  fill: #d926b5;
+}
+.icon-3:hover {
+  background: #d926b5;
+}
+
+.icon-4 {
+  color: #d9266e;
+  fill: #d9266e;
+}
+.icon-4:hover {
+  background: #d9266e;
+}
+@media screen and (max-width: 1024px) {
+  body {
+    overflow: hidden;
+  }
+  .BackgroundText {
+    margin: 30px;
+    padding: 1em;
+  }
+  .wrapper {
+    height: 100vh;
+  }
+
+  .EstiloTexto {
+    font-size: 18px;
+  }
+}
