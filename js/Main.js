@@ -19,6 +19,14 @@ class UserData {
 
     return this.percentage;
   }
+  getCicle(){
+    const HIGH_PERCENT_MONEY_AMOUNT = 1000;
+    const LONGCICLE = 6;
+    const SHORTCICLE = 5;
+
+    this.cicle = this.getMoney() < HIGH_PERCENT_MONEY_AMOUNT ? LONGCICLE : SHORTCICLE;
+    return this.cicle;
+  }
 
 }
 
@@ -28,13 +36,14 @@ function moneyCalculations() {
   let userMoney = myUser.getMoney();
   const daysInvesting = myUser.getDays();
   const basePercentage = myUser.getPercentage();
-  const basePercentageAfter6Days = 6 * basePercentage;
   
-  let moneyBenefitsAfter6Days;
+  const basePercentageAfterCicle = myUser.getCicle() * basePercentage; //Cicle means: After 6 or 5 days you can withdraw your deposit.
 
-  for (let dayCount = 0; dayCount < daysInvesting; dayCount += 6) {
-    moneyBenefitsAfter6Days = basePercentageAfter6Days * userMoney;
-    userMoney = moneyBenefitsAfter6Days + userMoney;
+  let moneyBenefitsAfterCicle;
+
+  for (let dayCount = 0; dayCount < daysInvesting; dayCount += myUser.getCicle() ) {
+    moneyBenefitsAfterCicle = basePercentageAfterCicle * userMoney;
+    userMoney = moneyBenefitsAfterCicle + userMoney;
   }
   
   return userMoney;
