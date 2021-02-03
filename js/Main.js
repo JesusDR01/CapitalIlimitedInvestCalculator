@@ -38,7 +38,7 @@ function moneyCalculations() {
   const basePercentage = myUser.getPercentage();
   
   const basePercentageAfterCicle = myUser.getCicle() * basePercentage; //Cicle means: After 6 or 5 days you can withdraw your deposit.
-
+ 
   let moneyBenefitsAfterCicle;
 
   for (let dayCount = 0; dayCount < daysInvesting; dayCount += myUser.getCicle() ) {
